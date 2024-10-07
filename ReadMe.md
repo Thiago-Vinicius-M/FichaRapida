@@ -13,6 +13,4 @@ Tecnologias Utilizadas;
 Como Executar;
 
 *Faça o clone deste repositório.
-*Instale as dependências listadas no arquivo requirements.txt.
-*Execute o script principal conforme descrito na seção "Instruções de Uso".
 *Adapte as coordenadas do texto a ser colado de acordo com sua necessidade.
