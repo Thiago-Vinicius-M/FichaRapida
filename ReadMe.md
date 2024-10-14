@@ -9,10 +9,3 @@ Tecnologias Utilizadas;
 *Python
 *openpyxl: Para extração e manipulação de dados em planilhas Excel.
 *PIL (Pillow): Para manipulação de imagens, inserindo os dados nos formulários pré-determinados.
-
-Como Executar;
-
-*Faça o clone deste repositório.
-*Instale as dependências listadas no arquivo requirements.txt.
-*Execute o script principal conforme descrito na seção "Instruções de Uso".
-*Adapte as coordenadas do texto a ser colado de acordo com sua necessid
