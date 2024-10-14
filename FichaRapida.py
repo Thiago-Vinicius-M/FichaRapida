@@ -13,10 +13,15 @@ font_nome_X = ImageFont.truetype('./arial.ttf', 30)
 font_texto = ImageFont.truetype('./arial.ttf',30)
 font_valor = ImageFont.truetype('./arial.ttf', 20)
 font_email = ImageFont.truetype('./arial.ttf', 27)
+font_ramo = ImageFont.truetype('./arial.ttf', 40)
 
-# Funão para desenhar o X 
+# Função para desenhar o X 
 def desenhar_X(desenhar, coord):
     desenhar.text(coord,'X',fill='black',font=font_nome_X)
+
+# Função para marcar o ramo de atividade
+def desenhar_ramo(desenhar, coord):
+    desenhar.text(coord,'*',fill='black',font=font_ramo)
 
 # Extraindo os dados da planilha 
 for linha in (Sheet1_dados.iter_rows(min_row=2, max_row=Sheet1_dados.max_row,min_col=1,max_col=Sheet1_dados.max_column)):
@@ -39,12 +44,13 @@ for linha in (Sheet1_dados.iter_rows(min_row=2, max_row=Sheet1_dados.max_row,min
     fatMensal = linha[16].value
     tipoImovel = linha[17].value
     valorImovel = linha[18].value 
-
+    ramoAtividade = linha[19].value
+    
     fatFormatado = locale.currency(fatMensal, grouping=True)
     valorImovelFormatado = locale.currency(valorImovel, grouping=True)
 
 # Abrindo imagem
-    image = Image.open("C:/Users/Thiago Dias/Desktop/Projeto FichaRapida/Ficha Cadastral Preenchimento Eletrônico - SETEMBRO 2021-1.png")
+    image = Image.open("C:/Users/Thiago Dias/Desktop/Projeto FichaRapida/Ficha_Cadastral.png")
     desenhar = ImageDraw.Draw(image)
 
 # Preenche tipo de venda
@@ -139,12 +145,39 @@ for linha in (Sheet1_dados.iter_rows(min_row=2, max_row=Sheet1_dados.max_row,min
     
 # Coordenada para Imóvel Próprio (317,723)
 # Coordenada para Imóvel Alugado (464, 723)
-
+    
 # Preenche Valor do Imóvel
     desenhar.text((869, 720), str(valorImovelFormatado),fill='black',font=font_valor)
 
+
+# Preencher ramo de atividade
+    coordAutoPeca = (66, 973)
+    coordPostoGas = (65, 1011)
+    coordUsina = (65, 1047)
+    coordTransportadora = (316, 971)
+    coordOficina = (612, 1086)
+    coordRetifica = (612, 1164)
+    coordOutros = (1409, 1008)
+   
+    if ramoAtividade and ramoAtividade.strip().upper() == 'AUTO PEÇAS':
+        desenhar_ramo(desenhar, coordAutoPeca)
+    elif ramoAtividade and ramoAtividade.strip().upper() == 'POSTO DE GASOLINA':
+        desenhar_ramo(desenhar, coordPostoGas)
+    elif ramoAtividade and ramoAtividade.strip().upper() == 'USINA':
+        desenhar_ramo(desenhar, coordUsina)
+    elif ramoAtividade and ramoAtividade.strip().upper() == 'TRANSPORTADORA':
+        desenhar_ramo(desenhar, coordTransportadora)
+    elif ramoAtividade and ramoAtividade.strip().upper() == 'OFICINA':
+        desenhar_ramo(desenhar, coordOficina)
+    elif ramoAtividade and ramoAtividade.strip().upper() == 'RETÍFICA':
+        desenhar_ramo(desenhar, coordRetifica)
+    elif ramoAtividade and ramoAtividade.strip().upper() == 'OUTROS':
+        desenhar_ramo(desenhar, coordOutros)
+    
 # Diretório da imagem
     diretorioImagem = 'C:/Users/Thiago Dias/Desktop/Projeto FichaRapida/Fichas Preenchidas'
 
 # Salva a imagem
     image.save(f'{diretorioImagem}/{razaoSocial} ficha cadastral.png')
+
+    
