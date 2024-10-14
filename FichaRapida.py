@@ -173,7 +173,7 @@ for linha in (Sheet1_dados.iter_rows(min_row=2, max_row=Sheet1_dados.max_row,min
         desenhar_ramo(desenhar, coordRetifica)
     elif ramoAtividade and ramoAtividade.strip().upper() == 'OUTROS':
         desenhar_ramo(desenhar, coordOutros)
-    
+
 # Diretório da imagem
     diretorioImagem = 'C:/Users/Thiago Dias/Desktop/Projeto FichaRapida/Fichas Preenchidas'
 
