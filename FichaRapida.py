@@ -179,5 +179,3 @@ for linha in (Sheet1_dados.iter_rows(min_row=2, max_row=Sheet1_dados.max_row,min
 
 # Salva a imagem
     image.save(f'{diretorioImagem}/{razaoSocial} ficha cadastral.png')
-
-    
